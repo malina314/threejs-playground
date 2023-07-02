@@ -49,15 +49,10 @@ const animate = () => {
     
     
     renderer.render(scene, camera);
-    
-    
-    // if (++i >= 18)
-    //     debugger;
 };
 
 const init = () => {
     console.log("start");
-    initForCBA();
 
     setTimeout( ()=>{
         document.body.appendChild(renderer.domElement);
@@ -65,32 +60,3 @@ const init = () => {
     }, 10);
     console.log("initialized correctly");
 }
-
-
-// const light = new THREE.PointLight(0xffffff, .51);
-// light.position.set(5, 0, 15);
-// scene.add(light);
-
-// const light4 = new THREE.PointLight(0xffffff, 1);
-// light4.position.set(8, 0, 4);
-// scene.add(light4);
-
-// const light2 = new THREE.PointLight(0x0000ff, 2);
-// light2.position.set(-5, -5, 1);
-// scene.add(light2);
-
-// const light3 = new THREE.PointLight(0x00ff00, 3);
-// light3.position.set(10, 30, 4);
-// scene.add(light3);
-
-
-
-// const mirrorGeo = new THREE.BoxGeometry(50, 50, 1);
-// const mirrorMat = new THREE.MeshPhongMaterial({
-    //     color: 0xee0000,
-    //     shininess: 0,
-    //     envMap: "reflection",
-    // });
-// const mirror = new THREE.Mesh(mirrorGeo, mirrorMat);
-
-// scene.add(mirror);
