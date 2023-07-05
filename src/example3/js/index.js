@@ -6,58 +6,27 @@ camera.position.set(0, 0, 8);
 const renderer = new THREE.WebGLRenderer({antialias: true});
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-const material1 = Lambert(0x00aa00);
-const material2 = Phong(0xee0000);
+scene.add(createObjectsSphere(createPiontLight(0.105, 0xffffff), 50, 8, 12));
 
-const cube1 = new THREE.Mesh(cubeGeo(), material1);
-const cube2 = new THREE.Mesh(cubeGeo(), material2);
+const h = prompt("Enter the height of the christmastree", "5");
 
-cube1.position.x = -3;
-cube2.position.x = 3;
-
-scene.add(cube1, cube2);
-
-
-scene.add(createObjectsSphere(createPiontLight(0.1, 0xffffff), 20, 8, 12));
-const spheresSphere = createObjectsSphere(createSphere(0.1, 0xffff00), 2, 16, 24);
-scene.add(spheresSphere);
-
-scene.add(createPiontLight(2, 0x0000ff)); // blue light at center
-
-//scene.add(createAxis(), createBigBox()); // navigation axis and border walls
-
-const ship = createShip();
-ship.position.set(0, -1, 2);
-ship.rotation.x = 0.5;
-ship.add(camera);
-
-scene.add(ship);
-
-let debugIterator = 1;
+const christmastree = createChristmastree(h, 0.1);
+scene.add(christmastree);
 
 const animate = () => {
     requestAnimationFrame(animate);
-    
-    cube1.rotation.x += 0.01;
-    cube1.rotation.y += 0.015;
-    
-    cube2.rotation.x += 0.01;
-    cube2.rotation.y += 0.015;
-    
-    spheresSphere.rotation.y += 0.01;   
-    spheresSphere.rotation.z += 0.001;   
+
+
+    christmastree.rotation.y += 0.01;
     
     
     renderer.render(scene, camera);
     
-    
-    // if (++i >= 18)
-    //     debugger;
+
 };
 
 const init = () => {
     console.log("start");
-    initForCBA();
 
     setTimeout( ()=>{
         document.body.appendChild(renderer.domElement);
